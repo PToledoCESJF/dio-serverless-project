@@ -62,6 +62,12 @@ functions:
       - httpApi:
           path: /clients
           method: get
+  getByIdClient:
+    handler: src/lambdas/client/getByIdClient.handler
+    events:
+      - httpApi:
+          path: /clients/{id}
+          method: get
 
 resources:
   Resources:
