@@ -1,10 +1,10 @@
 service: dio-serverless-project
-frameworkVersion: '2'
+frameworkVersion: "2"
 
 provider:
   name: aws
   runtime: nodejs14.x
-  lambdaHashingVersion: '20201221'
+  lambdaHashingVersion: "20201221"
   region: us-east-1
   iam:
     role:
@@ -25,17 +25,23 @@ functions:
       - httpApi:
           path: /
           method: get
+  insertItem:
+    handler: src/lambdas/insertItem.handler
+    events:
+      - httpApi:
+          path: /item
+          method: post
 
 resources:
   Resources:
     ItemTableNew:
       Type: AWS::DynamoDB::Table
       Properties:
-          TableName: ItemTableNew
-          BillingMode: PAY_PER_REQUEST
-          AttributeDefinitions:
-            - AttributeName: id
-              AttributeType: S
-          KeySchema:
-            - AttributeName: id
-              KeyType: HASH
+        TableName: ItemTableNew
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
