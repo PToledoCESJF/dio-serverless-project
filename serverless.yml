@@ -56,6 +56,12 @@ functions:
       - httpApi:
           path: /clients
           method: post
+  getAllClients:
+    handler: src/lambdas/client/getAllClients.handler
+    events:
+      - httpApi:
+          path: /clients
+          method: get
 
 resources:
   Resources:
