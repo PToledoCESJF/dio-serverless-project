@@ -3,13 +3,13 @@ const AWS = require("aws-sdk");
 const {v4} = require("uuid");
 
 const insertClient = async(event) => {
-    const {name, mail} = JSON.parse(event.body);
+    const {nameClient, mail} = JSON.parse(event.body);
     const id = v4();
     const dynamodb = new AWS.DynamoDB.DocumentClient();
 
     const newClient = {
         id,
-        name,
+        nameClient,
         mail
     };
 
