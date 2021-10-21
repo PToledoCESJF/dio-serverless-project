@@ -29,15 +29,21 @@ functions:
     handler: src/lambdas/insertItem.handler
     events:
       - httpApi:
-          path: /item
+          path: /items
           method: post
   getItens:
     handler: src/lambdas/getItens.handler
     events:
       - httpApi:
-          path: /itens
+          path: /items
           method: get
-
+  getItem:
+    handler: src/lambdas/getItem.handler
+    events:
+      - httpApi:
+          path: /items/{id}
+          method: get
+  
 resources:
   Resources:
     ItemTableNew:
