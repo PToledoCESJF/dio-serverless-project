@@ -17,6 +17,7 @@ provider:
             - dynamodb:Scan
           Resource:
             - arn:aws:dynamodb:us-east-1:260059209081:table/ItemTableNew
+            - arn:aws:dynamodb:us-east-1:260059209081:table/ClientTable
 
 functions:
   hello:
@@ -49,6 +50,12 @@ functions:
       - httpApi:
           path: /items/{id}
           method: put
+  insertClient:
+    handler: src/lambdas/client/insertClient.handler
+    events:
+      - httpApi:
+          path: /clients
+          method: post
 
 resources:
   Resources:
@@ -56,6 +63,17 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: ItemTableNew
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+    ClientTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ClientTable
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id
