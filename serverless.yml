@@ -43,7 +43,13 @@ functions:
       - httpApi:
           path: /items/{id}
           method: get
-  
+  updateItem:
+    handler: src/lambdas/updateItem.handler
+    events:
+      - httpApi:
+          path: /items/{id}
+          method: put
+
 resources:
   Resources:
     ItemTableNew:
