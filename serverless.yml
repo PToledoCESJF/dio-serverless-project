@@ -31,6 +31,12 @@ functions:
       - httpApi:
           path: /item
           method: post
+  getItens:
+    handler: src/lambdas/getItens.handler
+    events:
+      - httpApi:
+          path: /itens
+          method: get
 
 resources:
   Resources:
