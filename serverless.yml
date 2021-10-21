@@ -26,25 +26,25 @@ functions:
           path: /
           method: get
   insertItem:
-    handler: src/lambdas/insertItem.handler
+    handler: src/lambdas/items/insertItem.handler
     events:
       - httpApi:
           path: /items
           method: post
   getItens:
-    handler: src/lambdas/getItens.handler
+    handler: src/lambdas/items/getItens.handler
     events:
       - httpApi:
           path: /items
           method: get
   getItem:
-    handler: src/lambdas/getItem.handler
+    handler: src/lambdas/items/getItem.handler
     events:
       - httpApi:
           path: /items/{id}
           method: get
   updateItem:
-    handler: src/lambdas/updateItem.handler
+    handler: src/lambdas/items/updateItem.handler
     events:
       - httpApi:
           path: /items/{id}
