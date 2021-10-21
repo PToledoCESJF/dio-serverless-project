@@ -68,6 +68,12 @@ functions:
       - httpApi:
           path: /clients/{id}
           method: get
+  updateClient:
+    handler: src/lambdas/client/updateClient.handler
+    events:
+      - httpApi:
+          path: /clients/{id}
+          method: put
 
 resources:
   Resources:
